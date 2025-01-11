@@ -13,3 +13,17 @@ You can find the FreeAPI document here in the link
 5. PUT API - https://api.restful-api.dev/objects
 6. PATCH API - https://api.restful-api.dev/objects/7
 7. DELETE API -  https://api.restful-api.dev/objects/6
+
+
+*Environment Variables*
+BASE_URL= 'https://api.restful-api.dev'
+
+*Execute - To execute the test suite*
+
+pytest -vs --html=reports/report.html
+
+
+*To execute the test using markers*
+
+pytest -vsm "smoke" --html=reports/report.html
+pytest -vsm "regression" --html=reports/report.html
