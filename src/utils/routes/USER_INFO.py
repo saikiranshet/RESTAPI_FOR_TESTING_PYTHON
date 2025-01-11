@@ -1,0 +1,1 @@
+GET_INFO = "/objects"
