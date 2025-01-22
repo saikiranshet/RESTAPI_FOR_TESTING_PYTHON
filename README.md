@@ -27,3 +27,7 @@ pytest -vs --html=reports/report.html
 
 pytest -vsm "smoke" --html=reports/report.html
 pytest -vsm "regression" --html=reports/report.html
+
+
+Jenkins URL - http://13.60.94.126:8080/
+EC2 machine instance is set
