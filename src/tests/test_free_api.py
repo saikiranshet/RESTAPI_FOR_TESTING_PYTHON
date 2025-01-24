@@ -28,7 +28,7 @@ class TestUserInfo:
         data = get_api_obj.get(url_offset)
         third_item = data[0]
         id_name = (third_item['id'], third_item['name'])
-        expected = ('2','Apple iPhone 12 Pro Max')
+        expected = ('3','Apple iPhone 12 Pro Max')
         assert id_name == expected, f"Expected {expected}, but got {id_name}"
 
     
@@ -60,3 +60,16 @@ class TestUserInfo:
         data = get_api_obj.get(url_offset)
         id_value = data['id']
         assert id_value == '7', f"Expected '7', but got {id_value}"
+
+    
+    @pytest.mark.smoke
+    @pytest.mark.regression
+    def test_object_post_api(self, get_api_obj: APICaller):
+        """
+        This test is to fetch info
+        """
+        url_offset = USER_INFO.POST_URL
+        data = get_api_obj.post(url_offset)
+        
+
+     

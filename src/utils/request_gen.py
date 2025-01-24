@@ -1,5 +1,5 @@
 import requests
-
+from ..utils.payload import payload
 
 class APICaller:
     def __init__(self, base_url, headers):
@@ -15,6 +15,25 @@ class APICaller:
     ):
         url = f"{self.base_url}{url_offset}"
         response = requests.get(url, headers=self.headers, timeout=30)
+        res = None
+        if "application/json" in response.headers.get("Content-Type", ""):
+            res = response.json()
+        if not skip_err and response.status_code >= 400:
+            message = error
+            if isinstance(res, dict):
+                message = res.get(err_key, error)
+            raise Exception(message)
+        return res
+    
+    def post(
+        self,
+        url_offset,
+        err_key: str = "message",
+        error: str = "Failed to make POST request",
+        skip_err=False,
+    ):
+        url = f"{self.base_url}{url_offset}"        
+        response = requests.post(url,data=payload,headers=self.headers,timeout=30)
         res = None
         if "application/json" in response.headers.get("Content-Type", ""):
             res = response.json()

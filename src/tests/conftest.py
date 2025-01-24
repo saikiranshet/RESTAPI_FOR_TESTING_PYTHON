@@ -15,6 +15,6 @@ def get_api_obj():
     # API_ID = os.getenv("API_ID")
     # API_TOKEN = os.getenv("API_TOKEN")
     # token = b64encode(f"{API_ID}:{API_TOKEN}".encode('utf-8')).decode("ascii")
-    headers = {"Connection": f"keep-alive"}
+    headers = {"Connection": f"keep-alive","Content-Type":f"application/json"}
     api_obj = APICaller(BASE_URL,headers)
     return api_obj
